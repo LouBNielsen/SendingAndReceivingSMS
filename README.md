@@ -9,26 +9,19 @@ The SmsManager manages SMS operations such as sending data, text, and pdu SMS me
  *See link for API: https://developer.android.com/reference/android/telephony/SmsManager.html*
  
 The following is an example of an Android app, who can send and SMS to a mobile phone.
-
 If you use the SmsManager API, you will have to connect your Android mobile device with your computer.
-
 First of all, to be able to send and SMS, you need a  SEND_SMS permission.
-
 Copy this line into your Android Manifests.xml file:
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     
 
-** Notice, this MainActivity is written with Java **
+__Notice, this MainActivity is written with Java__
 
 This method checks wether you have permission to send a SMS or not. 
-
 If you have permission the method will 
-
 MY_PERMISSIONS_REQUEST_SEND_SMS
-
 PackageManager.PERMISSION_GRANTED
-
 
 fetch the phone number and the message and send it.
 
