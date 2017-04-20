@@ -66,7 +66,13 @@ and the SmsManager:
     SmsManager smsManager = SmsManager.getDefault();
     smsManager.sendTextMessage(phoneNo, null, message, null, null);
 
+The first argument passed to sendTextMessage() is the destination address to which the message has to be sent.
 
+The second argument is the SMSC address (it’s also like a phone number generally) to which if you pass null, the default service center of the device’s carrier will be used. 
+
+Third argument is the text message to be sent in the SMS. 
+
+The fourth and fifth arguments if not null must be pending intents performing broadcasts when the message is successfully sent (or failed) and delivered to the recipient.
 
 ### Build in application
 If you use the devices Built-in SMS application, you can send a SMS without having your Android mobile device connected to your computer.
