@@ -51,8 +51,10 @@ This method
             case MY_PERMISSIONS_REQUEST_SEND_SMS: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                 ** SmsManager smsManager = SmsManager.getDefault(); **
-                 ** smsManager.sendTextMessage(phoneNo, null, message, null, null); **
+  
+  __Notice the SmsManager__ SmsManager smsManager = SmsManager.getDefault();
+  __Notice the SmsManager__ smsManager.sendTextMessage(phoneNo, null, message, null, null);
+  
                     Toast.makeText(getApplicationContext(), "SMS sent.",
                             Toast.LENGTH_LONG).show();
                 } else {
