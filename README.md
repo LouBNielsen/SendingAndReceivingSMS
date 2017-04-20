@@ -16,8 +16,6 @@ Copy this line into your Android Manifests.xml file:
     <uses-permission android:name="android.permission.SEND_SMS" />
     
 
-__Notice, this MainActivity is written with Java__
-
 The following methods checks whether you have permission to send a SMS or not. If you have permission the phone number and the message from the GUI will be fetched and send as an SMS.
 
 
