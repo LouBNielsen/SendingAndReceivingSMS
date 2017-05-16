@@ -101,3 +101,12 @@ The following method uses the ACTION_VIEW to start the SMS application. If you h
     }
 
 By using the Build-in application you don't have to take care of permissions like in the first example. The Build-in application has already taken care of that.
+
+
+But, this is also going to work and this is very simple!
+
+  buttonSendSMS2.onClick {
+    val number = "41100534"
+    val text = "Jeg sender en sms"
+    sendSMS(number, text) 
+  }
