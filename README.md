@@ -105,8 +105,10 @@ By using the Build-in application you don't have to take care of permissions lik
 
 But, this is also going to work and this is very simple!
 
-  buttonSendSMS2.onClick {
-    val number = "41100534"
-    val text = "Jeg sender en sms"
-    sendSMS(number, text) 
-  }
+        buttonSendSMS2.onClick {
+            val number = "41100532"
+            val text = "Jeg sender en anden sms"
+            sendSMS(number, text) 
+        }
+
+        
