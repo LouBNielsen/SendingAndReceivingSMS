@@ -111,4 +111,49 @@ But, this is also going to work and this is very simple!
             sendSMS(number, text) 
         }
 
-        
+
+## Receiving an SMS
+
+Android apps can send or receive broadcast messages. In this case a broadcasts are sent when we receive an SMS.
+
+First, to be able to receive a SMS, you need a RECEIVE_SMS permission.
+Copy this line into your Android Manifests.xml file:
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    
+And this receiver, intent-filter:
+
+    <receiver android:name=".SmsReceiver" android:exported="true" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+    </receiver>
+
+Next, you have to extend your class with a BroadcastReceiver()
+
+    class SmsReceiver : BroadcastReceiver()
+    
+This is the code needed to create a broadcast receiver.
+
+    override fun onReceive(context: Context, intent: Intent) {
+        val intentExtras = intent.extras
+
+        if (intentExtras != null) {
+            val sms = intentExtras.get("pdus") as Array<Any>
+
+            for (i in sms.indices) {
+                val smsMessage = SmsMessage.createFromPdu(sms[i] as ByteArray)
+
+                val phone = smsMessage.originatingAddress
+                val message = smsMessage.messageBody.toString()
+            }
+        }
+    }
+ 
+ A nice feature could be this:
+ 
+      if(message.startsWith("#SHOW")){
+         Toast.makeText(context, phone + ": " + message, Toast.LENGTH_SHORT).show()
+      }
+
+
