@@ -16,24 +16,25 @@ Copy this line into your Android Manifests.xml file:
     <uses-permission android:name="android.permission.SEND_SMS" />
     
 
-The following methods checks whether you have permission to send a SMS or not. If you have permission the phone number and the message from the GUI will be fetched and send as a SMS.
+The following methods checks whether you have permission to send a SMS or not.
+If you have permission the phone number and the message from the GUI will be fetched and send as a SMS.
 
+```kotlin
+protected fun sendSMSMessage() {
+    phoneNo = phonenumber.text.toString()
+    messageTxt = message.text.toString()
 
-    protected fun sendSMSMessage() {
-        phoneNo = phonenumber.text.toString()
-        messageTxt = message.text.toString()
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        arrayOf(Manifest.permission.SEND_SMS),
-                        MY_PERMISSIONS_REQUEST_SEND_SMS)
-            }
+    if (ContextCompat.checkSelfPermission(this,
+            Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.SEND_SMS),
+                    MY_PERMISSIONS_REQUEST_SEND_SMS)
         }
     }
-
+}
+```
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_SEND_SMS -> {
