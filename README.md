@@ -34,7 +34,7 @@ protected fun sendSMSMessage() {
         }
     }
 }
-```
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_SEND_SMS -> {
@@ -51,7 +51,7 @@ protected fun sendSMSMessage() {
             }
         }
     }
-    
+ ```   
 Actually, you don't have to have all the lines of codes which checks for permissions to be able to send a SMS. 
 Basically the lines of code you need is the uses-permission:
 
@@ -82,7 +82,7 @@ Copy this line into your Android Manifests.xml file:
 
 The following method uses the ACTION_VIEW to start the SMS application. If you have multible SMS applications the user will have to choose from a list which SMS application to use. To send a SMS you need to specify the URI and the data type with the to methods setData() and setType(). 
 
-    protected fun sendSMS() {
+    protected fun sendSMSbyIntet() {
      Log.i("Send SMS", "")
      val smsIntent = Intent(Intent.ACTION_VIEW)
 
@@ -150,6 +150,7 @@ This is the code needed to create a broadcast receiver.
             }
         }
     }
+ NOTICE: createFromPdu(sms[i] as ByteArray) - this method was deprecated in API level 23. Use createFromPdu(byte[], String) instead
  
  A nice feature could be this:
  
